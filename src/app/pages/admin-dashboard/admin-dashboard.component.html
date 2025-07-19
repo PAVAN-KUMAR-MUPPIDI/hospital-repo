@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <h2 class="text-primary">Hospital Admin Dashboard</h2>
+  <p class="text-muted">{{ hospitalName }}, {{ location }}</p>
+
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="card border-success shadow-sm text-center">
+        <div class="card-body">
+          <h5>Total Consultations</h5>
+          <p class="display-6">{{ totalConsultations }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-info shadow-sm text-center">
+        <div class="card-body">
+          <h5>Total Revenue</h5>
+          <p class="display-6 text-info">₹{{ totalRevenue }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="mt-4" />
+
+  <h4>Doctors Associated</h4>
+  <table class="table table-bordered mt-2">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Consultations</th>
+        <th>Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doc of doctors">
+        <td>{{ doc.name }}</td>
+        <td>{{ doc.department }}</td>
+        <td>{{ doc.consultations }}</td>
+        <td>₹{{ doc.revenue }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="mt-4" />
+
+  <h4>Revenue by Department</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr class="table-secondary">
+        <th>Department</th>
+        <th>Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dept of departmentKeys">
+        <td>{{ dept }}</td>
+        <td>₹{{ revenueByDepartment[dept] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

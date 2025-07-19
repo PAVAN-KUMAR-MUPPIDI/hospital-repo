@@ -1,0 +1,7 @@
+.card {
+  min-height: 120px;
+}
+.table th,
+.table td {
+  text-align: center;
+}

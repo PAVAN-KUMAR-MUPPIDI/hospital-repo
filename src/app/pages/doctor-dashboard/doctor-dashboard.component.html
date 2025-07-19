@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <h2 class="text-primary">Doctor Dashboard</h2>
+
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="card border-success shadow-sm">
+        <div class="card-body text-center">
+          <h5>Total Consultations</h5>
+          <p class="display-6 text-success">{{ totalConsultations }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-info shadow-sm">
+        <div class="card-body text-center">
+          <h5>Total Earnings</h5>
+          <p class="display-6 text-info">₹{{ totalEarnings }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <h4>Earnings Per Hospital</h4>
+    <table class="table table-bordered table-striped mt-2">
+      <thead class="table-dark">
+        <tr>
+          <th>Hospital</th>
+          <th>Earnings (60%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hospital of Object.keys(earningsByHospital)">
+          <td>{{ hospital }}</td>
+          <td>₹{{ earningsByHospital[hospital] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

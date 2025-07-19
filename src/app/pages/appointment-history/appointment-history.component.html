@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+    <h3 class="text-primary">Appointment History</h3>
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Doctor</th>
+                <th>Hospital</th>
+                <th>Department</th>
+                <th>Fee</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of appointments">
+                <td>{{ a.date }}</td>
+                <td>{{ a.doctor }}</td>
+                <td>{{ a.hospital }}</td>
+                <td>{{ a.department }}</td>
+                <td>₹{{ a.fee }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<app-footer></app-footer>

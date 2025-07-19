@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <h3 class="text-primary">Search Doctors</h3>
+  <form class="row g-3 mb-4" (ngSubmit)="onSearch()">
+    <div class="col-md-4">
+      <label for="specialization" class="form-label">Specialization</label>
+      <select class="form-select" [(ngModel)]="search.specialization" name="specialization" required>
+        <option value="">Select</option>
+        <option *ngFor="let spec of specializations">{{ spec }}</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="hospital" class="form-label">Hospital</label>
+      <select class="form-select" [(ngModel)]="search.hospital" name="hospital" required>
+        <option value="">Select</option>
+        <option *ngFor="let h of hospitals">{{ h }}</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="date" class="form-label">Availability Date</label>
+      <input type="date" class="form-control" [(ngModel)]="search.date" name="date" required>
+    </div>
+    <div class="col-12 text-end">
+      <button class="btn btn-primary mt-2">Search</button>
+    </div>
+  </form>
+
+  <div *ngIf="filteredDoctors.length > 0">
+    <h5>Available Doctors:</h5>
+    <ul class="list-group">
+      <li *ngFor="let doc of filteredDoctors" class="list-group-item">
+        <strong>{{ doc.name }}</strong> - {{ doc.specialization }}<br />
+        <small>{{ doc.hospital }} | ₹{{ doc.fee }}</small><br />
+        <small>Available: {{ doc.date }} at {{ doc.time }}</small>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="searchAttempted && filteredDoctors.length === 0" class="text-danger mt-3">
+    No doctors found matching your search.
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="card mx-auto" style="max-width: 400px;">
+    <div class="card-header text-center bg-primary text-white">
+      <h4>{{ isLogin ? 'Login' : 'Sign Up' }}</h4>
+    </div>
+    <div class="card-body">
+      <form *ngIf="isLogin" (ngSubmit)="onLogin()">
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="loginEmail" [(ngModel)]="loginData.email" name="loginEmail" required />
+        </div>
+        <div class="mb-3">
+          <label for="loginPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" id="loginPassword" [(ngModel)]="loginData.password" name="loginPassword" required />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+      </form>
+
+      <form *ngIf="!isLogin" (ngSubmit)="onRegister()">
+        <div class="mb-3">
+          <label for="registerEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="registerEmail" [(ngModel)]="registerData.email" name="registerEmail" required />
+        </div>
+        <div class="mb-3">
+          <label for="registerPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" id="registerPassword" [(ngModel)]="registerData.password" name="registerPassword" required />
+        </div>
+        <button type="submit" class="btn btn-success w-100">Sign Up</button>
+      </form>
+    </div>
+    <div class="card-footer text-center">
+      <button class="btn btn-link" (click)="toggleForm()">
+        {{ isLogin ? 'New user? Sign Up' : 'Already registered? Login' }}
+      </button>
+    </div>
+  </div>
+</div>
